@@ -30,11 +30,11 @@ const main = async () => {
    */
  
 app.get('/enviar-mensaje', async (req, res) => {
-  const numero = "+5491159132301";
+  const numero = "5491159132301";
   const media = ""
   const mensaje = "asd";
 
-  if (!validarCelular(numero)) {
+  if (!validarCelular("5491159132301")) {
       return res.send({
           transaccion: false,
           mensaje: 'Número de celular no válido'
