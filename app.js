@@ -28,10 +28,45 @@ const main = async () => {
   /**
    * Enviar mensaje con metodos propios del provider del bot
    */
-  app.get("/send-message-bot", async (req, res) => {
-    await adapterProvider.sendText("54959132301@c.us", "Mensaje desde API");
-    res.send({ data: "enviado!" });
-  });
+ 
+app.get('/enviar-mensaje', async (req, res) => {
+  const numero = req.body.numero;
+  const media = req.body.url_media;
+  const mensaje = req.body.mensaje;
+
+  if (!validarCelular(numero)) {
+      return res.send({
+          transaccion: false,
+          mensaje: 'Número de celular no válido'
+      });
+  }
+
+  const existeSesion = await sesionCreada();
+  if (!existeSesion) {
+      return res.send({
+          transaccion: false,
+          mensaje: 'Sesion no creada, por favor escane el codigo qr'
+      });
+  }
+  
+  try {
+      if (req.body?.hasOwnProperty('url_media')) {
+          await adapterProvider.sendMedia(numero, media, mensaje);
+      } else {
+          await adapterProvider.sendText("5491159132301", "mensaje");
+      }
+      return res.send({
+          transaccion: true,
+          mensaje: 'enviado!'
+      });
+
+  } catch (error) {
+      return res.send({
+          transaccion: false,
+          mensaje: 'error!'
+      });
+  }
+});
   /**
    * Enviar mensajes con metodos nativos del provider
    */
