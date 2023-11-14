@@ -2,10 +2,7 @@ const express = require("express");
 const { join } = require("path");
 const { createReadStream } = require("fs");
 const {
-  createBot,
-  createProvider,
-  createFlow,
-  addKeyword,
+  createProvider
 } = require("@bot-whatsapp/bot");
 
 const BaileysProvider = require("@bot-whatsapp/provider/baileys");
@@ -15,14 +12,12 @@ const flowPrincipal = addKeyword("hi").addAnswer("Hello!");
 
 const app = express();
 const main = async () => {
-  const adapterDB = new MockAdapter();
-  const adapterFlow = createFlow([flowPrincipal]);
   const adapterProvider = createProvider(BaileysProvider);
 
   createBot({
-    flow: adapterFlow,
+  
     provider: adapterProvider,
-    database: adapterDB,
+
   });
 
   /**
