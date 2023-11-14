@@ -35,7 +35,7 @@ const main = async () => {
   /**
    * Enviar mensajes con metodos nativos del provider
    */
-  app.post("/send-message-provider", async (req, res) => {
+  app.get("/send-message-provider", async (req, res) => {
     const id = "54959132301@c.us";
     const templateButtons = [
       {
