@@ -12,11 +12,6 @@ const app = express();
 const main = async () => {
   const adapterProvider = createProvider(BaileysProvider);
 
-  createBot({
-  
-    provider: adapterProvider,
-
-  });
 
   /**
    * Enviar mensaje con metodos propios del provider del bot
