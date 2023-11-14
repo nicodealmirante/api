@@ -29,14 +29,14 @@ const main = async () => {
    * Enviar mensaje con metodos propios del provider del bot
    */
   app.post("/send-message-bot", async (req, res) => {
-    await adapterProvider.sendText("52XXXXXXXXX@c.us", "Mensaje desde API");
+    await adapterProvider.sendText("54959132301@c.us", "Mensaje desde API");
     res.send({ data: "enviado!" });
   });
   /**
    * Enviar mensajes con metodos nativos del provider
    */
   app.post("/send-message-provider", async (req, res) => {
-    const id = "52XXXXXXXXX@c.us";
+    const id = "54959132301@c.us";
     const templateButtons = [
       {
         index: 1,
