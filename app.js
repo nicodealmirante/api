@@ -1,6 +1,6 @@
 const express = require("express");
-const {ProviderClass
-} = require("@bot-whatsapp/bot");
+const ProviderClass
+ = require("@bot-whatsapp/bot");
 const BaileysProvider = require("@bot-whatsapp/provider/baileys");
   const providerInstance = new providerClass(adapterProvider2);
 
