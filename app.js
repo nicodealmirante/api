@@ -16,6 +16,6 @@ app.get('/enviar-mensaje', async (req, res) => {
 
 
 
-          await adapterProvider.sendText("5491159132301@s.whatsapp.net", "mensaje");
+          await adapterProvider2.sendText("5491159132301@s.whatsapp.net", "mensaje");
       
 });
