@@ -1,11 +1,14 @@
 const express = require("express");
-const ProviderClass
- = require("@bot-whatsapp/bot");
+
+const createProvider = (providerClass = class {}, args = null) => {
+  const providerInstance = new providerClass(args);
+  if (!providerClass.prototype instanceof ProviderClass) throw new Error('El provider no implementa ProviderClass')
+  return providerInstance
+};
+
 const BaileysProvider = require("@bot-whatsapp/provider/baileys");
-  const providerInstance = new providerClass(adapterProvider2);
 
-
-  const adapterProvider2 = providerInstance(BaileysProvider);
+  const adapterProvider2 = createProvider(BaileysProvider);
 
 const app = express();
 
