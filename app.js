@@ -4,10 +4,7 @@ const { createReadStream } = require("fs");
 const {
   createProvider
 } = require("@bot-whatsapp/bot");
-
 const BaileysProvider = require("@bot-whatsapp/provider/baileys");
-
-
 const app = express();
 const main = async () => {
   const adapterProvider = createProvider(BaileysProvider);
