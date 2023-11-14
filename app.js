@@ -6,9 +6,7 @@ const {
 } = require("@bot-whatsapp/bot");
 
 const BaileysProvider = require("@bot-whatsapp/provider/baileys");
-const MockAdapter = require("@bot-whatsapp/database/mock");
 
-const flowPrincipal = addKeyword("hi").addAnswer("Hello!");
 
 const app = express();
 const main = async () => {
