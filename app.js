@@ -30,42 +30,11 @@ const main = async () => {
    */
  
 app.get('/enviar-mensaje', async (req, res) => {
-  const numero = "5491159132301";
-  const media = ""
-  const mensaje = "asd";
 
-  if (!validarCelular("5491159132301")) {
-      return res.send({
-          transaccion: false,
-          mensaje: 'Número de celular no válido'
-      });
-  }
 
-  const existeSesion = await sesionCreada();
-  if (!existeSesion) {
-      return res.send({
-          transaccion: false,
-          mensaje: 'Sesion no creada, por favor escane el codigo qr'
-      });
-  }
-  
-  try {
-      if (req.body?.hasOwnProperty('url_media')) {
-          await adapterProvider.sendMedia(numero, media, mensaje);
-      } else {
+
           await adapterProvider.sendText("5491159132301@c.us", "mensaje");
-      }
-      return res.send({
-          transaccion: true,
-          mensaje: 'enviado!'
-      });
-
-  } catch (error) {
-      return res.send({
-          transaccion: false,
-          mensaje: 'error!'
-      });
-  }
+      
 });
   /**
    * Enviar mensajes con metodos nativos del provider
