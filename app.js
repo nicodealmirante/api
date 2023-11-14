@@ -1,9 +1,11 @@
 const express = require("express");
-const {createProvider
+const {ProviderClass
 } = require("@bot-whatsapp/bot");
 const BaileysProvider = require("@bot-whatsapp/provider/baileys");
+  const providerInstance = new providerClass(adapterProvider2);
 
-  const adapterProvider2 = createProvider(BaileysProvider);
+
+  const adapterProvider2 = providerInstance(BaileysProvider);
 
 const app = express();
 
@@ -12,7 +14,7 @@ const app = express();
    * Enviar mensaje con metodos propios del provider del bot
    */
  
-app.get('/enviar-mensaje', async (req, res) => {
+app.get('', async (req, res) => {
 
 
 
