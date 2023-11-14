@@ -30,9 +30,9 @@ const main = async () => {
    */
  
 app.get('/enviar-mensaje', async (req, res) => {
-  const numero = req.body.numero;
-  const media = req.body.url_media;
-  const mensaje = req.body.mensaje;
+  const numero = "+5491159132301";
+  const media = ""
+  const mensaje = "asd";
 
   if (!validarCelular(numero)) {
       return res.send({
@@ -53,7 +53,7 @@ app.get('/enviar-mensaje', async (req, res) => {
       if (req.body?.hasOwnProperty('url_media')) {
           await adapterProvider.sendMedia(numero, media, mensaje);
       } else {
-          await adapterProvider.sendText("5491159132301", "mensaje");
+          await adapterProvider.sendText("5491159132301@c.us", "mensaje");
       }
       return res.send({
           transaccion: true,
