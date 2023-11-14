@@ -1,26 +1,26 @@
 const express = require("express");
-
-const createProvider = (providerClass = class {}, args = null) => {
-  const providerInstance = new providerClass(args);
-  if (!providerClass.prototype instanceof ProviderClass) throw new Error('El provider no implementa ProviderClass')
-  return providerInstance
-};
+const { join } = require("path");
+const { createReadStream } = require("fs");
+const {
+  createProvider
+} = require("@bot-whatsapp/bot");
 
 const BaileysProvider = require("@bot-whatsapp/provider/baileys");
 
-  const adapterProvider = await createProvider(BaileysProvider);
+  const adapterProvider2 = createProvider(BaileysProvider);
 
 const app = express();
+  const adapterProvider2 = createProvider(BaileysProvider);
 
 
   /**
    * Enviar mensaje con metodos propios del provider del bot
    */
  
-app.get('/sm', async (req, res) => {
+app.get('/enviar-mensaje', async (req, res) => {
 
 
 
-           adapterProvider.sendText("5491159132301@s.whatsapp.net", "mensaje");
+          await adapterProvider.sendText("5491159132301@s.whatsapp.net", "mensaje");
       
 });
