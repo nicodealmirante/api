@@ -13,7 +13,6 @@ const MockAdapter = require("@bot-whatsapp/database/mock");
 
 const flowPrincipal = addKeyword("hi").addAnswer("Hello!");
 
-const app = express();
 const main = async () => {
   const adapterDB = new MockAdapter();
   const adapterFlow = createFlow([flowPrincipal]);
@@ -24,6 +23,7 @@ const main = async () => {
     provider: adapterProvider,
     database: adapterDB,
   });
+const app = express();
 
   /**
    * Enviar mensaje con metodos propios del provider del bot
