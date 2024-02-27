@@ -13,6 +13,7 @@ const MockAdapter = require("@bot-whatsapp/database/mock");
 
 const flowPrincipal = addKeyword("hi").addAnswer("Hello!");
 
+const app = express();
 const main = async () => {
   const adapterDB = new MockAdapter();
   const adapterFlow = createFlow([flowPrincipal]);
@@ -23,25 +24,54 @@ const main = async () => {
     provider: adapterProvider,
     database: adapterDB,
   });
-const app = express();
 
   /**
    * Enviar mensaje con metodos propios del provider del bot
    */
- let asd
+ 
 app.get('/enviar-mensaje', async (req, res) => {
+  const numero = "+5491159132301";
+  const media = ""
+  const mensaje = "asd";
 
+  if (!validarCelular(numero)) {
+      return res.send({
+          transaccion: false,
+          mensaje: 'Número de celular no válido'
+      });
+  }
 
-
+  const existeSesion = await sesionCreada();
+  if (!existeSesion) {
+      return res.send({
+          transaccion: false,
+          mensaje: 'Sesion no creada, por favor escane el codigo qr'
+      });
+  }
+  
+  try {
+      if (req.body?.hasOwnProperty('url_media')) {
+          await adapterProvider.sendMedia(numero, media, mensaje);
+      } else {
           await adapterProvider.sendText("5491159132301@c.us", "mensaje");
-      
+      }
+      return res.send({
+          transaccion: true,
+          mensaje: 'enviado!'
+      });
+
+  } catch (error) {
+      return res.send({
+          transaccion: false,
+          mensaje: 'error!'
+      });
+  }
 });
   /**
    * Enviar mensajes con metodos nativos del provider
    */
-  app.get(`/sm?:${asd}`, async (req, res) => {
+  app.get("/send-message-provider", async (req, res) => {
     const id = "54959132301@c.us";
-    console.log(asd)
     const templateButtons = [
       {
         index: 1,
